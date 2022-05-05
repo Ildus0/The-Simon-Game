@@ -1,31 +1,42 @@
-'use strict';
-const btnColor = ['green', 'red', 'yellow', 'blue'];
-let arrGenColors = [];
-let arrColorsForCompare = [];
+"use strict";
+const btnColor = ["green", "red", "yellow", "blue"];
+var numRandom;
+var randomChousenColor;
+var gamePattern = [];
 
-$('.btn').click(function (y) {
-    // arrForCompare.push($(".btn").attr('id'));
-    console.log(y.target.id);
-arrColorsForCompare.push(y.target.id);
-console.log(arrColorsForCompare);
-});
 
-function genNum() {
-    let num = Math.floor(Math.random() * 4);
-   console.log(num);
-    if (num ===  0) {
-        arrGenColors.push("green");
-    }   if (num ===1) {
-            arrGenColors.push("red");
-        } if (num === 2) {
-                arrGenColors.push("yellow");
-            } if (num===3) {
-                arrGenColors.push("blue");
-            }
-            console.log(arrGenColors);
-            //adn need code to show visual next button
-        }
+// $(document).on("load", nextSequesnce());
 
-$(document).keypress(function () {
-    genNum();
-});
+function nextSequesnce() {
+    numRandom = Math.floor(Math.random() * 4);
+    console.log(numRandom);
+    randomChousenColor = btnColor[numRandom];
+    console.log(randomChousenColor);
+    gamePattern.push(randomChousenColor);
+    console.log(gamePattern);
+   console.log($('.btn')[numRandom]) ;
+   $("#" + randomChousenColor).fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100);
+   
+ }
+  
+  
+
+
+// $(".btn").click(function (y) {
+//         arrColorsForCompare.push(y.target.id);
+//     var count = arrColorsForCompare.length - 1;
+// if (arrGenColors)
+//     console.log("arrColorsForCompare is " + arrColorsForCompare);
+//     console.log('btn pressed ' + count + " times");
+
+//     for (let i = 0; i <= count; i++) {
+//         if (arrGenColors[i] === arrColorsForCompare[i]) {
+//             genRandomColor();
+//             arrColorsForCompare =[];
+//         }
+
+//     }
+// });
+
+
+

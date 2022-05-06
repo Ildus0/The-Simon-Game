@@ -1,34 +1,36 @@
-'use strict';
-const btnColor = ['green', 'red', 'yellow', 'blue'];
-let arrGenColors = [];
-let arrColorsForCompare = [];
+"use strict"
+const btnColor = ["green", "red", "yellow", "blue"];
+var numRandom;
+var randomChousenColor;
+var gamePattern = [];
+var userClickedPattern = [];
 
-$('.btn').click(function (y) {
-    // arrForCompare.push($(".btn").attr('id'));
-    console.log(y.target.id);
-    arrColorsForCompare.push(y.target.id);
-    console.log(arrColorsForCompare);
+
+function nextSequesnce() {
+    numRandom = Math.floor(Math.random() * 4);
+    console.log(numRandom);
+    randomChousenColor = btnColor[numRandom];
+    console.log(randomChousenColor);
+    gamePattern.push(randomChousenColor);
+    console.log(gamePattern);
+   console.log($('.btn')[numRandom]) ;
+   $("#" + randomChousenColor).fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100);
+   var audio = new Audio("sounds/" + randomChousenColor + ".mp3");
+   audio.play();
+   
+ }
+  
+
+$(".btn").click(function (y) {
+        var userChosenColor = y.target.id;
+        userClickedPattern.push(userChosenColor);
+        console.log(userClickedPattern);
+        $("#" + userChosenColor).fadeOut(100).fadeIn(100);
+        var audioR = new Audio("sounds/" + userChosenColor + ".mp3");
+   audioR.play();
 });
 
-function genNum() {
-    let num = Math.floor(Math.random() * 4);
-    console.log(num);
-    if (num === 0) {
-        arrGenColors.push("green");
-    }
-    if (num === 1) {
-        arrGenColors.push("red");
-    }
-    if (num === 2) {
-        arrGenColors.push("yellow");
-    }
-    if (num === 3) {
-        arrGenColors.push("blue");
-    }
-    console.log(arrGenColors);
-    //adn need code to show visual next button
-}
+$(document).keypress(nextSequesnce);
 
-$(document).keypress(function () {
-    genNum();
-});
+
+
